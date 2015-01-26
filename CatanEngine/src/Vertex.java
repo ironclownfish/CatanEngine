@@ -1,13 +1,13 @@
 
 public class Vertex {
 
-	private SettlementFactory settlement = null;
+	private Factory settlement = null;
 	
 	public boolean isSettled() {
 		return settlement != null;
 	}
 	
-	public SettlementFactory getSettlement() {
+	public Factory getSettlement() {
 		return settlement;
 	}
 }
