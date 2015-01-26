@@ -7,5 +7,5 @@ public class Tile {
 	public ResourceCard resourceCardGained() {
 		return resourceCardGained;
 	}
-	
+
 }
