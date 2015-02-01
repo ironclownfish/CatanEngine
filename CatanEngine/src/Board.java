@@ -2,7 +2,7 @@
 public class Board {
 
 	private Tile[][] tiles = new Tile[5][5];
-	private Vertex[][] vertices = new Vertex[2][];
+	private Vertex[][] vertices = new Vertex[3][];
 	private Port[] ports = new Port[9];
 	
 	public Board() {
@@ -11,11 +11,11 @@ public class Board {
 		vertices[2] = new Vertex[36];
 	}
 	
-	public void setTile(String resource, int x, int y) {
+	public void setTile(byte resourceType, int x, int y) {
 		if (!inBounds(x, y))
 			return;
 		x += 2; y += 2;
-		//TODO
+		tiles[x][y] = new Tile(resourceType);
 	}
 	
 	public Tile getTile(int x, int y) {

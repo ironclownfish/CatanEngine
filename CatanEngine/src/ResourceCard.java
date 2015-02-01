@@ -9,15 +9,12 @@ public class ResourceCard {
 	public static final byte TYPE_WHEAT = 3;
 	public static final byte TYPE_CLAY = 4;
 	public static final byte TYPE_GENERIC = 5;
+	public static final byte TYPE_NONE = 6;
 	
 	private byte myType = TYPE_GENERIC;
 	
 	public byte type() {
 		return myType;
-	}
-	
-	public static byte inferResourceTypeFromPlayerInputString(String input) {
-		return 99; //TODO
 	}
 	
 	public static ResourceCard getCardOfType(byte wantType) {
@@ -35,5 +32,25 @@ public class ResourceCard {
 			default:
 				return null;
 		}
+	}
+	
+	public static String typeName(byte type) {
+		switch(type) {
+		case TYPE_ORE:
+			return "ore";
+		case TYPE_WOOD:
+			return "wood";
+		case TYPE_SHEEP:
+			return "sheep";
+		case TYPE_WHEAT:
+			return "wheat";
+		case TYPE_CLAY:
+			return "clay";
+		case TYPE_GENERIC:
+			return "any";
+		case TYPE_NONE:
+			return "none";
+		}
+		return "no type";
 	}
 }
