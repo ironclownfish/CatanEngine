@@ -14,13 +14,43 @@ public class CatanDriver {
 	}
 	
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	Board board = new Board();
 	
 	public void setup() {
 		
-		Board board = new Board();
+		String answer = "";
 		
 		//Set up ports
-		ask("Are the ports connected in suggested order? (y/n)");
+		answer = ask("Are the ports connected in suggested order? (y/n)");
+		switch (answer.charAt(0)) {
+		case 'y':
+		case 'Y':
+			board.setPorts(new Port[] {
+				new Port(2, ResourceCard.TYPE_ORE),
+				new Port(2, ResourceCard.TYPE_WHEAT),
+				new Port(3, ResourceCard.TYPE_GENERIC),
+				new Port(2, ResourceCard.TYPE_WOOD),
+				new Port(2, ResourceCard.TYPE_CLAY),
+				new Port(3, ResourceCard.TYPE_GENERIC),
+				new Port(3, ResourceCard.TYPE_GENERIC),
+				new Port(3, ResourceCard.TYPE_SHEEP),
+				new Port(3, ResourceCard.TYPE_GENERIC)
+		});
+			break;
+		default:
+			Port[] ports = new Port[9];
+			ports[0] = new Port(2, ResourceCard.TYPE_ORE);
+			for (int i = 1; i < 9; i++) {
+				answer = ask("What kind of resource does the port " + i + " spaces counterclockwise from the ore port accept?");
+				byte type = ResourceCard.inferResourceTypeFromPlayerInputString(answer);
+				int ratio = Port.getExpectedTradeRatioFromType(type);
+				ports[i] = new Port(ratio, type);
+
+				//See if we can infer the next port by what this one is (if they're on the same board segment).
+				if 		(type == ResourceCard.TYPE_WHEAT || type == ResourceCard.TYPE_CLAY || type == ResourceCard.TYPE_SHEEP)
+					ports[++i] = new Port(3, ResourceCard.TYPE_GENERIC);
+			}
+		}
 		
 		//Set up tiles.
 		ask("What resource is next to the rock port?");

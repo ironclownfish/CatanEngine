@@ -31,4 +31,8 @@ public class Board {
 	public Port getPort(int t) {
 		return ports[t%9];
 	}
+	
+	public void setPorts(Port[] ports) {
+		this.ports = ports;
+	}
 }
