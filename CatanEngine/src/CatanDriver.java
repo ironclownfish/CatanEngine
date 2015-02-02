@@ -61,7 +61,7 @@ public class CatanDriver {
 				type = askForTileType("What kind of tile is next to the rock port?");
 				break;
 			case 1:
-				type = askForTileType("What kind of tile is next to the rock port and the " + ResourceCard.typeName(board.getPort(1).takesType()) + " port next to it?");
+				type = askForTileType("What kind of tile is between the rock port and the " + ResourceCard.typeName(board.getPort(1).takesType()) + " port next to it?");
 				break;
 			case 2:
 			case 3:
@@ -75,7 +75,7 @@ public class CatanDriver {
 				break;
 			case 9:
 				type = askForTileType("What kind of tile is between the " + ResourceCard.typeName(board.getPort(i - 3).takesType()) + " port"
-						+ "and the " + ResourceCard.typeName(board.getPort(i - 2).takesType()) + " port next to it?");
+						+ " and the " + ResourceCard.typeName(board.getPort(i - 2).takesType()) + " port next to it?");
 				break;
 			case 10:
 			case 11:
